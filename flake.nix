@@ -10,6 +10,11 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+
+    satysfi-uline = {
+      url = "github:puripuri2100/SATySFi-uline";
+      flake = false;
+    };
   };
   outputs = {
     self,
@@ -18,6 +23,7 @@
     devshell,
     satyxin,
     satysfi-tools,
+    satysfi-uline,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -30,7 +36,26 @@
             satysfi-tools.overlay
           ];
         };
-      in {
+      in rec {
+        packages = flake-utils.lib.flattenTree rec {
+          main = pkgs.satyxin.buildDocument {
+            name = "main";
+            src = ./src;
+            filename = "main.saty";
+            buildInputs = [
+              satysfiPackages.satysfi-uline
+            ];
+          };
+          satysfiPackages = {
+            satysfi-uline = pkgs.satyxin.buildPackage {
+              name = "satysfi-uline";
+              src = satysfi-uline;
+              path = "uline.satyh";
+            };
+          };
+        };
+        defaultPackage = packages.main;
+
         devShell = pkgs.devshell.mkShell {
           imports = [
             (pkgs.devshell.importTOML ./devshell.toml)

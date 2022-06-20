@@ -201,6 +201,7 @@
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2",
         "satysfi-tools": "satysfi-tools",
+        "satysfi-uline": "satysfi-uline",
         "satyxin": "satyxin"
       }
     },
@@ -257,6 +258,22 @@
       "original": {
         "owner": "SnO2WMaN",
         "repo": "satysfi-tools-nix",
+        "type": "github"
+      }
+    },
+    "satysfi-uline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612656852,
+        "narHash": "sha256-94lChvMIkuIFHJgPoMbQCkivIGwz5EieCOKpcTaKThc=",
+        "owner": "puripuri2100",
+        "repo": "SATySFi-uline",
+        "rev": "a5de5851100d02d2533d7744cdd529f43e0302a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "puripuri2100",
+        "repo": "SATySFi-uline",
         "type": "github"
       }
     },
