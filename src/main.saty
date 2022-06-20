@@ -1,0 +1,10 @@
+@require: stdja
+
+StdJa.document (|
+    title = { はじめての\SATySFi; };
+    author = { SnO2WMaN };
+    show-title = false;
+    show-toc = false;
+|) '<
+    +p{ 叫べ心の形を！！ }
+>
