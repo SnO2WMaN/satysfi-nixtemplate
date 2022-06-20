@@ -37,21 +37,19 @@
           ];
         };
       in rec {
-        packages = flake-utils.lib.flattenTree rec {
+        packages = flake-utils.lib.flattenTree {
           main = pkgs.satyxin.buildDocument {
             name = "main";
             src = ./src;
             filename = "main.saty";
             buildInputs = [
-              satysfiPackages.satysfi-uline
+              packages.satysfi-uline
             ];
           };
-          satysfiPackages = {
-            satysfi-uline = pkgs.satyxin.buildPackage {
-              name = "satysfi-uline";
-              src = satysfi-uline;
-              path = "uline.satyh";
-            };
+          satysfi-uline = pkgs.satyxin.buildPackage {
+            name = "uline";
+            src = satysfi-uline;
+            path = "uline.satyh";
           };
         };
         defaultPackage = packages.main;
