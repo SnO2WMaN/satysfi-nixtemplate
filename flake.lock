@@ -200,26 +200,9 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2",
-        "satysfi-easytable": "satysfi-easytable",
         "satysfi-tools": "satysfi-tools",
         "satysfi-uline": "satysfi-uline",
         "satyxin": "satyxin"
-      }
-    },
-    "satysfi-easytable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1651278826,
-        "narHash": "sha256-my6WLJrXeHSDfWrP4STAnr279kHNfLeKv5KIvbLc/s8=",
-        "owner": "monaqa",
-        "repo": "satysfi-easytable",
-        "rev": "14e819ae44bc8ea01a2d297de2497086e9ced45d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "monaqa",
-        "repo": "satysfi-easytable",
-        "type": "github"
       }
     },
     "satysfi-formatter": {
