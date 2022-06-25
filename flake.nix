@@ -4,15 +4,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     devshell.url = "github:numtide/devshell";
     satyxin.url = "github:SnO2WMaN/satyxin";
+    satyxinur.url = "github:SnO2WMaN/satyxinur";
     satysfi-tools.url = "github:SnO2WMaN/satysfi-tools-nix";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
-      flake = false;
-    };
-
-    satysfi-uline = {
-      url = "github:puripuri2100/SATySFi-uline";
       flake = false;
     };
   };
@@ -22,8 +18,8 @@
     flake-utils,
     devshell,
     satyxin,
+    satyxinur,
     satysfi-tools,
-    satysfi-uline,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -33,24 +29,20 @@
           overlays = [
             devshell.overlay
             satyxin.overlay
+            satyxinur.overlay
             satysfi-tools.overlay
           ];
         };
       in rec {
-        packages = flake-utils.lib.flattenTree {
-          main = pkgs.satyxin.buildDocument {
-            name = "main";
-            src = ./src;
-            filename = "main.saty";
-            buildInputs = [
-              packages.satysfi-uline
-            ];
-          };
-          satysfi-uline = pkgs.satyxin.buildPackage {
-            name = "uline";
-            src = satysfi-uline;
-            path = "uline.satyh";
-          };
+        packages.main = pkgs.satyxin.buildDocument {
+          name = "main";
+          src = ./src;
+          filename = "main.saty";
+          buildInputs = with pkgs.satyxinPackages; [
+            uline
+            bibyfi
+            fss
+          ];
         };
         defaultPackage = packages.main;
 
