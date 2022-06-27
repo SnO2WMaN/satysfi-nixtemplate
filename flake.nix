@@ -3,7 +3,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     devshell.url = "github:numtide/devshell";
-    satyxin.url = "github:SnO2WMaN/satyxin";
     satyxinur.url = "github:SnO2WMaN/satyxinur";
     satysfi-tools.url = "github:SnO2WMaN/satysfi-tools-nix";
 
@@ -17,7 +16,6 @@
     nixpkgs,
     flake-utils,
     devshell,
-    satyxin,
     satyxinur,
     satysfi-tools,
     ...
@@ -28,23 +26,27 @@
           inherit system;
           overlays = [
             devshell.overlay
-            satyxin.overlay
             satyxinur.overlay
             satysfi-tools.overlay
           ];
         };
       in rec {
-        packages.main = pkgs.satyxin.buildDocument {
-          name = "main";
-          src = ./src;
-          filename = "main.saty";
-          buildInputs = with pkgs.satyxinPackages; [
-            uline
-            bibyfi
-            fss
-          ];
+        packages = rec {
+          satydist = pkgs.satyxin.buildSatydist {
+            packages = [
+              "uline"
+              "bibyfi"
+              "fss"
+            ];
+          };
+          main = pkgs.satyxin.buildDocument {
+            inherit satydist;
+            name = "main";
+            src = ./src;
+            entrypoint = "main.saty";
+          };
         };
-        defaultPackage = packages.main;
+        defaultPackage = self.packages."${system}".main;
 
         devShell = pkgs.devshell.mkShell {
           imports = [
