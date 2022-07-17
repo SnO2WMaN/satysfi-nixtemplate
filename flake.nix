@@ -3,7 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     devshell.url = "github:numtide/devshell";
-    satyxinur.url = "github:SnO2WMaN/satyxinur";
+    satyxin.url = "github:SnO2WMaN/satyxin";
     satysfi-tools.url = "github:SnO2WMaN/satysfi-tools-nix";
 
     flake-compat = {
@@ -16,7 +16,7 @@
     nixpkgs,
     flake-utils,
     devshell,
-    satyxinur,
+    satyxin,
     satysfi-tools,
     ...
   } @ inputs:
@@ -26,7 +26,7 @@
           inherit system;
           overlays = [
             devshell.overlay
-            satyxinur.overlay
+            satyxin.overlay
             satysfi-tools.overlay
           ];
         };
