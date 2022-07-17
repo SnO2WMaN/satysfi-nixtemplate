@@ -4,7 +4,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     devshell.url = "github:numtide/devshell";
     satyxin.url = "github:SnO2WMaN/satyxin";
-    satysfi-tools.url = "github:SnO2WMaN/satysfi-tools-nix";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -17,7 +16,6 @@
     flake-utils,
     devshell,
     satyxin,
-    satysfi-tools,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (
@@ -27,7 +25,6 @@
           overlays = [
             devshell.overlay
             satyxin.overlay
-            satysfi-tools.overlay
           ];
         };
       in rec {
