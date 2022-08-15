@@ -9,7 +9,7 @@
       "languages": [
         "json",
         "jsonc",
-        "md",
+        "markdown",
         "nix",
         "satysfi",
         "toml"
