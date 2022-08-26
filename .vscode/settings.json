@@ -3,6 +3,7 @@
   "satysfi-workshop.executable": "satysfi",
   "satysfi-workshop.languageServer.enabled": true,
   "satysfi-workshop.languageServer.path": "satysfi-language-server",
+  "satysfi-workshop.build.rootFile": "src/main.saty",
   "customLocalFormatters.formatters": [
     {
       "command": "treefmt -q --stdin ${file}",
